@@ -28,14 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Let op: veel hosts accepteren geen "From" met willekeurige afzenders.
         // Gebruik daarom een fixed From op jouw domein, en zet de gebruiker in Reply-To.
-        $from = "no-reply@graafschapcollege.nl"; // <-- vervang dit naar iets op jouw domein
+        
+        $headers = "From: $email";
+        
 
-        $headers = [];
-        $headers[] = "From: {$from}";
-        $headers[] = "Reply-To: {$email}";
-        $headers[] = "Content-Type: text/plain; charset=UTF-8";
-
-        if (mail($to, $subject, $body, implode("\r\n", $headers))) {
+        if (mail($to, $subject, $body, $headers)) {
             $successMsg = "Email sent successfully!";
             // formulier leegmaken na succes
             $name = $email = $message = '';
