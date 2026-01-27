@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Let op: veel hosts accepteren geen "From" met willekeurige afzenders.
         // Gebruik daarom een fixed From op jouw domein, en zet de gebruiker in Reply-To.
         
-        $headers = "From: $email";
+        //$headers = "From: $email";
         
 
         if (mail($to, $subject, $body, $headers)) {
